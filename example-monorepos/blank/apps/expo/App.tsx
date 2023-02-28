@@ -1,10 +1,10 @@
-import { NativeNavigation } from 'app/navigation/native'
+import { TabStacks } from 'app/navigation/native'
 import { Provider } from 'app/provider'
 
 export default function App() {
   return (
     <Provider>
-      <NativeNavigation />
+      <TabStacks />
     </Provider>
   )
 }

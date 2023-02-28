@@ -1,32 +1,49 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { HomeScreen } from '../../features/home/screen'
-import { UserDetailScreen } from '../../features/user/detail-screen'
+import { UserTop } from '../../features/user/UserTop'
+import { UserNested } from '../../features/user/UserNested'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const Stack = createNativeStackNavigator<{
-  home: undefined
-  'user-detail': {
-    id: string
-  }
+  userTop: undefined
+  userNested: undefined
 }>()
 
-export function NativeNavigation() {
+function UserScreens() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="home"
-        component={HomeScreen}
+        name="userTop"
+        component={UserTop}
         options={{
-          title: 'Home',
+          title: 'User Top',
         }}
       />
       <Stack.Screen
-        name="user-detail"
-        component={UserDetailScreen}
+        name="userNested"
+        component={UserNested}
         options={{
-          title: 'User',
+          title: 'User Nested',
         }}
       />
     </Stack.Navigator>
+  )
+}
+const Tab = createBottomTabNavigator<{
+  home: undefined
+  user: undefined
+}>()
+
+export const TabStacks = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen name="home" component={HomeScreen} />
+      <Tab.Screen name="user" component={UserScreens} />
+    </Tab.Navigator>
   )
 }

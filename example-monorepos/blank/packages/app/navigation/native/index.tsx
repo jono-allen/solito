@@ -40,6 +40,7 @@ export const TabStacks = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        // lazy: false, // toggle this to be able to jumpto nested screen
       }}
     >
       <Tab.Screen name="home" component={HomeScreen} />
